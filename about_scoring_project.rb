@@ -28,9 +28,38 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # More scoring examples are given in the tests below:
 #
 # Your goal is to write the score method.
+def count_score_of_one_number(array,number)
+  count = 0
+  price_for_one = 0
+  check_1 = false
+  array.each do |init|
+    count+=1 if init == number
+  end
+  if count == 0
+    return 0
+  end
+  if number == 1
+    check_1 = true
+    price_for_one = 100
+  end
+  if number == 5
+    price_for_one = 50
+  end
+  if count < 3
+    return price_for_one * count
+  else
+    return (check_1 ? 1000 : number*100) + (count - 3)*price_for_one
+  end
+end
 
 def score(dice)
-  # You need to write this method
+  my_score = 0
+  i = 0
+  while i<10 do
+    i+=1
+    my_score+=count_score_of_one_number(dice,i)
+  end
+  return my_score
 end
 
 class AboutScoringProject < Neo::Koan
