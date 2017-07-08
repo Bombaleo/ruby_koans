@@ -5,14 +5,11 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 class DiceSet
   attr_accessor :values
   def initialize
-    @values = Array.new
+    @values = []
   end
-   def roll(coll)
-     @values = Array.new
-     while coll > 0
-       values << rand(5)+1
-       coll-=1
-     end
+
+  def roll(coll)
+    @values = Array.new(coll) { rand(5) + 1 }
    end
 end
 
