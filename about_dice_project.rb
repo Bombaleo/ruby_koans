@@ -9,8 +9,8 @@ class DiceSet
   end
 
   def roll(coll)
-    @values = Array.new(coll) { rand(5) + 1 }
-   end
+    @values = Array.new(coll) { rand(1..6) }
+  end
 end
 
 class AboutDiceProject < Neo::Koan
